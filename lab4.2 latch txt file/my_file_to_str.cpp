@@ -9,11 +9,14 @@ vector<string> read_file(const string& filename)
 	ostringstream oss;
 	oss << ifs.rdbuf();
 	string cur_word;
-	vector<string>res;
+	string cur_string;
+	vector<string>words;
 	stringstream ss(oss.str());
-	while (getline(ss, cur_word,' '))
+	while (getline(ss, cur_string))
 	{
-		res.push_back(cur_word);
+		stringstream s(cur_string);
+		while(getline(s,cur_word,' '))
+			words.push_back(cur_word);
 	} 
-	return res;
+	return words;
 }
